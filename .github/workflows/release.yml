@@ -1,0 +1,29 @@
+name: Release Workflow Agenda
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exemplo de uso do token
+        run: echo "Usando token $GITHUB_TOKEN"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Criar Release
+        run: echo "Release criada com sucesso!"
